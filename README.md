@@ -1,5 +1,15 @@
 <html>
 <head>
+<script type="text/javascript">
+  function toggleLike(score,btId){
+    if(score == " "){
+      document.getElementById(btId).value = "X";
+    }else if{
+      document.getElementById(btId).value = "O";
+    }
+    
+  }
+</head>
 <body>
 
 <table>
@@ -22,5 +32,4 @@
 
 
 </body>
-</head>
 </html>
