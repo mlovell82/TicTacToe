@@ -4,19 +4,19 @@
 
 <table>
   <tr>
-    <td><button type="button>empty</button></td>
-    <td><button type="button></button></td>
-    <td><button type="button></button></td>
+    <td><input onclick="toggleLike(this.value,this.id)" type="button" value=" " id="score"></td>
+    <td><input onclick="toggleLike(this.value,this.id)" type="button" value=" " id="score"></td>
+    <td><input onclick="toggleLike(this.value,this.id)" type="button" value=" " id="score"></td>
   </tr>
   <tr>
-    <td> <button type="button></button></td>
-    <td><button type="button></button></td>
-    <td><button type="button></button></td>
+    <td><input onclick="toggleLike(this.value,this.id)" type="button" value=" " id="score"></td>
+    <td><input onclick="toggleLike(this.value,this.id)" type="button" value=" " id="score"></td>
+    <td><input onclick="toggleLike(this.value,this.id)" type="button" value=" " id="score"></td>
   </tr>
   <tr>
-    <td><button type="button></button></td>
-    <td><button type="button></button></td>
-    <td><button type="button></button></td>
+    <td><input onclick="toggleLike(this.value,this.id)" type="button" value=" " id="score"></td>
+    <td><input onclick="toggleLike(this.value,this.id)" type="button" value=" " id="score"></td>
+    <td><input onclick="toggleLike(this.value,this.id)" type="button" value=" " id="score"></td>
   </tr>
 </table>
 
