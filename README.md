@@ -1,17 +1,25 @@
 <html>
 <head>
 <style>
-
+table{
+	border: 3px;
+	width: 600px;
+	height: 600px;
+	table-layout: fixed;
+	
+}
 input, button, select, option, textarea{
-font-size: 100px;
+font-size: 75px;
 }
 </style>
 <script type="text/javascript">
-  function toggleLike(score,btId){
+var gameOver = false;
+  function toggleLike(score,btId){ // This function calls play(), winnerYet(), and celebration() upon each click of the game board
     play(btId);
     winnerYet();
+	celebration();
   }
-  function play(btId){
+  function play(btId){ // This function decides if 'O' or 'X' is to be played
   var space = [];
   var i, count;
   count = 0;
@@ -30,12 +38,12 @@ font-size: 100px;
 		count++;
 	}
 	
- if((count == 9) || (count == 7) || (count == 5) || (count == 3) || (count == 1)) 
+ if(((count == 9) || (count == 7) || (count == 5) || (count == 3) || (count == 1)) && (document.getElementById(btId).value == " ")) 
 	document.getElementById(btId).value = "X";
-if((count == 8) || (count == 6) || (count == 4) || (count == 2))
+if(((count == 8) || (count == 6) || (count == 4) || (count == 2)) && (document.getElementById(btId).value == " "))
 	document.getElementById(btId).value = "O";
   }
-  function winnerYet(){
+  function winnerYet(){ // This function decides if the 'O's or the 'X's won the game
   var one = document.getElementById("a1").value;
   var two = document.getElementById("a2").value;
   var three = document.getElementById("a3").value;
@@ -45,19 +53,34 @@ if((count == 8) || (count == 6) || (count == 4) || (count == 2))
   var seven = document.getElementById("c1").value;
   var eight = document.getElementById("c2").value;
   var nine = document.getElementById("c3").value;
-  if(((one =='X') && (two == 'X') && (three == 'X')) || ((four == 'X') && (five == 'X') && (six == 'X')) || ((seven == 'X') && (eight == 'X') && (nine == 'X')) || ((one == 'X') && (five == 'X') && (nine == 'X')) || ((three == 'X') && (five == 'X') && (seven == 'X')) || ((one == 'X') && (four == 'X') && (seven == 'X')) || ((two == 'X') && (five == 'X') && (eight == 'X')) || ((three == 'X') && (six == 'X') && (nine == 'X')))
+  if(((one =='X') && (two == 'X') && (three == 'X')) || ((four == 'X') && (five == 'X') && (six == 'X')) || ((seven == 'X') && (eight == 'X') && (nine == 'X')) || ((one == 'X') && (five == 'X') && (nine == 'X')) || ((three == 'X') && (five == 'X') && (seven == 'X')) || ((one == 'X') && (four == 'X') && (seven == 'X')) || ((two == 'X') && (five == 'X') && (eight == 'X')) || ((three == 'X') && (six == 'X') && (nine == 'X'))){
 	window.alert("X is winner!");
-  if(((one =='O') && (two == 'O') && (three == 'O')) || ((four == 'O') && (five == 'O') && (six == 'O')) || ((seven == 'O') && (eight == 'O') && (nine == 'O')) || ((one == 'O') && (five == 'O') && (nine == 'O')) || ((three == 'O') && (five == 'O') && (seven == 'O')) || ((one == 'O') && (four == 'O') && (seven == 'O')) || ((two == 'O') && (five == 'O') && (eight == 'O')) || ((three == 'O') && (six == 'O') && (nine == 'O')))
+	gameOver = true;
+	}
+  if(((one =='O') && (two == 'O') && (three == 'O')) || ((four == 'O') && (five == 'O') && (six == 'O')) || ((seven == 'O') && (eight == 'O') && (nine == 'O')) || ((one == 'O') && (five == 'O') && (nine == 'O')) || ((three == 'O') && (five == 'O') && (seven == 'O')) || ((one == 'O') && (four == 'O') && (seven == 'O')) || ((two == 'O') && (five == 'O') && (eight == 'O')) || ((three == 'O') && (six == 'O') && (nine == 'O'))){
 	window.alert("O is winner!")
+	gameOver = true;
+	}
   }
-  function celebration(){
-  
+  function celebration(){ // This function restarts game
+  if(gameOver){
+	document.getElementById("a1").value = " ";
+    document.getElementById("a2").value = " ";
+    document.getElementById("a3").value = " ";
+    document.getElementById("b1").value = " ";
+    document.getElementById("b2").value = " ";
+    document.getElementById("b3").value = " ";
+    document.getElementById("c1").value = " ";
+    document.getElementById("c2").value = " ";
+    document.getElementById("c3").value = " ";
+	gameOver = false;
+	}
   }
   </script>
   </head>
 <body>
-
-<table border="3" width="600" height="600">
+<input onclick="celebration()" type="button" value="restart?" align="right" style="font-size:10px;">
+<table>
   <tr>
     <td><input onclick="toggleLike(this.value,this.id)" type="button" value=" " id="a1" style="width:100%; height:100%;"></td>
     <td><input onclick="toggleLike(this.value,this.id)" type="button" value=" " id="a2" style="width:100%; height:100%;"></td>
@@ -67,6 +90,7 @@ if((count == 8) || (count == 6) || (count == 4) || (count == 2))
     <td><input onclick="toggleLike(this.value,this.id)" type="button" value=" " id="b1" style="width:100%; height:100%;"></td>
     <td><input onclick="toggleLike(this.value,this.id)" type="button" value=" " id="b2" style="width:100%; height:100%;"></td>
     <td><input onclick="toggleLike(this.value,this.id)" type="button" value=" " id="b3" style="width:100%; height:100%;"></td>
+
   </tr>
   <tr>
     <td><input onclick="toggleLike(this.value,this.id)" type="button" value=" " id="c1" style="width:100%; height:100%;"></td>
@@ -74,7 +98,7 @@ if((count == 8) || (count == 6) || (count == 4) || (count == 2))
     <td><input onclick="toggleLike(this.value,this.id)" type="button" value=" " id="c3" style="width:100%; height:100%;"></td>
   </tr>
 </table>
-
+	
 
 </body>
 
